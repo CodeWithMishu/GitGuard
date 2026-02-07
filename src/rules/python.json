@@ -1,0 +1,240 @@
+{
+  "category": "python",
+  "name": "Python",
+  "description": "Rules for Python projects including Django, Flask, and FastAPI",
+  "rules": [
+    {
+      "pattern": ".env",
+      "severity": "critical",
+      "reason": "Environment files contain secrets, API keys, and database credentials that should never be committed"
+    },
+    {
+      "pattern": ".env.local",
+      "severity": "critical",
+      "reason": "Local environment files contain developer-specific secrets"
+    },
+    {
+      "pattern": "*.env",
+      "severity": "critical",
+      "reason": "Any environment file may contain sensitive configuration"
+    },
+    {
+      "pattern": ".python-version",
+      "severity": "optional",
+      "reason": "pyenv version file is often developer-specific"
+    },
+    {
+      "pattern": "venv/",
+      "severity": "recommended",
+      "reason": "Virtual environment should be recreated locally, not committed. Can be very large."
+    },
+    {
+      "pattern": ".venv/",
+      "severity": "recommended",
+      "reason": "Virtual environment directory should not be committed"
+    },
+    {
+      "pattern": "env/",
+      "severity": "recommended",
+      "reason": "Environment directory should be recreated locally"
+    },
+    {
+      "pattern": "ENV/",
+      "severity": "recommended",
+      "reason": "Environment directory should be recreated locally"
+    },
+    {
+      "pattern": "__pycache__/",
+      "severity": "recommended",
+      "reason": "Python bytecode cache is generated automatically and machine-specific"
+    },
+    {
+      "pattern": "*.py[cod]",
+      "severity": "recommended",
+      "reason": "Compiled Python files should not be committed"
+    },
+    {
+      "pattern": "*$py.class",
+      "severity": "optional",
+      "reason": "Jython compiled files should not be committed"
+    },
+    {
+      "pattern": "*.so",
+      "severity": "recommended",
+      "reason": "Compiled C extensions are platform-specific and should not be committed"
+    },
+    {
+      "pattern": ".Python",
+      "severity": "optional",
+      "reason": "Virtual environment artifact should not be committed"
+    },
+    {
+      "pattern": "pip-log.txt",
+      "severity": "optional",
+      "reason": "pip log files are developer-specific"
+    },
+    {
+      "pattern": "pip-delete-this-directory.txt",
+      "severity": "optional",
+      "reason": "pip temporary file should not be committed"
+    },
+    {
+      "pattern": ".tox/",
+      "severity": "optional",
+      "reason": "tox testing environments should not be committed"
+    },
+    {
+      "pattern": ".nox/",
+      "severity": "optional",
+      "reason": "nox testing environments should not be committed"
+    },
+    {
+      "pattern": ".coverage",
+      "severity": "optional",
+      "reason": "Coverage.py data file should not be committed"
+    },
+    {
+      "pattern": ".coverage.*",
+      "severity": "optional",
+      "reason": "Coverage.py data files should not be committed"
+    },
+    {
+      "pattern": "htmlcov/",
+      "severity": "optional",
+      "reason": "Coverage HTML reports should be generated locally"
+    },
+    {
+      "pattern": ".pytest_cache/",
+      "severity": "optional",
+      "reason": "pytest cache directory should not be committed"
+    },
+    {
+      "pattern": ".mypy_cache/",
+      "severity": "optional",
+      "reason": "mypy cache directory is machine-specific"
+    },
+    {
+      "pattern": ".ruff_cache/",
+      "severity": "optional",
+      "reason": "Ruff linter cache should not be committed"
+    },
+    {
+      "pattern": "*.egg-info/",
+      "severity": "optional",
+      "reason": "Egg metadata directory should not be committed"
+    },
+    {
+      "pattern": "*.egg",
+      "severity": "optional",
+      "reason": "Built egg files should not be committed"
+    },
+    {
+      "pattern": "dist/",
+      "severity": "recommended",
+      "reason": "Distribution packages should be built, not committed"
+    },
+    {
+      "pattern": "build/",
+      "severity": "recommended",
+      "reason": "Build directory should be regenerated"
+    },
+    {
+      "pattern": "*.manifest",
+      "severity": "optional",
+      "reason": "Installer manifest files should not be committed"
+    },
+    {
+      "pattern": "*.spec",
+      "severity": "optional",
+      "reason": "PyInstaller spec files may be project-specific - consider if needed"
+    },
+    {
+      "pattern": ".ipynb_checkpoints/",
+      "severity": "recommended",
+      "reason": "Jupyter notebook checkpoints should not be committed"
+    },
+    {
+      "pattern": "*.sqlite3",
+      "severity": "critical",
+      "reason": "SQLite database files may contain sensitive data"
+    },
+    {
+      "pattern": "db.sqlite3",
+      "severity": "critical",
+      "reason": "Django default SQLite database should not be committed"
+    },
+    {
+      "pattern": "*.db",
+      "severity": "recommended",
+      "reason": "Database files may contain sensitive data"
+    },
+    {
+      "pattern": "secrets.json",
+      "severity": "critical",
+      "reason": "Secrets file should never be committed"
+    },
+    {
+      "pattern": "local_settings.py",
+      "severity": "critical",
+      "reason": "Local settings often contain secrets and should not be committed"
+    }
+  ],
+  "frameworks": {
+    "django": [
+      {
+        "pattern": "*.log",
+        "severity": "optional",
+        "reason": "Log files should not be committed"
+      },
+      {
+        "pattern": "local_settings.py",
+        "severity": "critical",
+        "reason": "Django local settings contain environment-specific secrets"
+      },
+      {
+        "pattern": "db.sqlite3",
+        "severity": "critical",
+        "reason": "Django development database should not be committed"
+      },
+      {
+        "pattern": "staticfiles/",
+        "severity": "recommended",
+        "reason": "Collected static files should be regenerated"
+      },
+      {
+        "pattern": "media/",
+        "severity": "recommended",
+        "reason": "User-uploaded media files are often excluded from version control"
+      },
+      {
+        "pattern": "celerybeat-schedule",
+        "severity": "optional",
+        "reason": "Celery beat schedule file is machine-specific"
+      },
+      {
+        "pattern": "celerybeat.pid",
+        "severity": "optional",
+        "reason": "Celery beat PID file is machine-specific"
+      }
+    ],
+    "flask": [
+      {
+        "pattern": "instance/",
+        "severity": "recommended",
+        "reason": "Flask instance folder may contain secrets and local config"
+      },
+      {
+        "pattern": ".webassets-cache",
+        "severity": "optional",
+        "reason": "Flask-Assets cache should not be committed"
+      }
+    ],
+    "fastapi": [
+      {
+        "pattern": "*.db",
+        "severity": "recommended",
+        "reason": "Database files should not be committed"
+      }
+    ]
+  }
+}

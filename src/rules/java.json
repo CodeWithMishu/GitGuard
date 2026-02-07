@@ -1,0 +1,168 @@
+{
+  "category": "java",
+  "name": "Java",
+  "description": "Rules for Java projects using Maven and Gradle",
+  "rules": [
+    {
+      "pattern": ".env",
+      "severity": "critical",
+      "reason": "Environment files contain secrets that should never be committed"
+    },
+    {
+      "pattern": "application-local.properties",
+      "severity": "critical",
+      "reason": "Local Spring properties may contain secrets and should not be committed"
+    },
+    {
+      "pattern": "application-local.yml",
+      "severity": "critical",
+      "reason": "Local Spring YAML config may contain secrets"
+    },
+    {
+      "pattern": "application-local.yaml",
+      "severity": "critical",
+      "reason": "Local Spring YAML config may contain secrets"
+    },
+    {
+      "pattern": "*.class",
+      "severity": "recommended",
+      "reason": "Compiled Java class files should not be committed"
+    },
+    {
+      "pattern": "*.jar",
+      "severity": "recommended",
+      "reason": "JAR files should be built, not committed (unless intentionally vendored)"
+    },
+    {
+      "pattern": "*.war",
+      "severity": "recommended",
+      "reason": "WAR files should be built, not committed"
+    },
+    {
+      "pattern": "*.ear",
+      "severity": "optional",
+      "reason": "EAR files should be built, not committed"
+    },
+    {
+      "pattern": "*.nar",
+      "severity": "optional",
+      "reason": "NAR files should be built, not committed"
+    },
+    {
+      "pattern": "hs_err_pid*",
+      "severity": "optional",
+      "reason": "JVM crash logs should not be committed"
+    },
+    {
+      "pattern": "replay_pid*",
+      "severity": "optional",
+      "reason": "JVM replay files should not be committed"
+    },
+    {
+      "pattern": ".idea/",
+      "severity": "optional",
+      "reason": "IntelliJ IDEA project files are developer-specific (consider sharing code style)"
+    },
+    {
+      "pattern": "*.iml",
+      "severity": "optional",
+      "reason": "IntelliJ module files are generated and developer-specific"
+    },
+    {
+      "pattern": ".project",
+      "severity": "optional",
+      "reason": "Eclipse project file is developer-specific"
+    },
+    {
+      "pattern": ".classpath",
+      "severity": "optional",
+      "reason": "Eclipse classpath file is developer-specific"
+    },
+    {
+      "pattern": ".settings/",
+      "severity": "optional",
+      "reason": "Eclipse settings are developer-specific"
+    },
+    {
+      "pattern": "bin/",
+      "severity": "recommended",
+      "reason": "Eclipse build output should not be committed"
+    },
+    {
+      "pattern": "*.log",
+      "severity": "optional",
+      "reason": "Log files should not be committed"
+    },
+    {
+      "pattern": "logs/",
+      "severity": "optional",
+      "reason": "Log directories should not be committed"
+    }
+  ],
+  "frameworks": {
+    "maven": [
+      {
+        "pattern": "target/",
+        "severity": "recommended",
+        "reason": "Maven build output directory should not be committed"
+      },
+      {
+        "pattern": "pom.xml.tag",
+        "severity": "optional",
+        "reason": "Maven release plugin temporary file"
+      },
+      {
+        "pattern": "pom.xml.releaseBackup",
+        "severity": "optional",
+        "reason": "Maven release plugin backup file"
+      },
+      {
+        "pattern": "pom.xml.versionsBackup",
+        "severity": "optional",
+        "reason": "Maven versions plugin backup file"
+      },
+      {
+        "pattern": "pom.xml.next",
+        "severity": "optional",
+        "reason": "Maven release plugin temporary file"
+      },
+      {
+        "pattern": "release.properties",
+        "severity": "optional",
+        "reason": "Maven release plugin properties file"
+      },
+      {
+        "pattern": "dependency-reduced-pom.xml",
+        "severity": "optional",
+        "reason": "Maven shade plugin output"
+      }
+    ],
+    "gradle": [
+      {
+        "pattern": ".gradle/",
+        "severity": "recommended",
+        "reason": "Gradle cache directory should not be committed"
+      },
+      {
+        "pattern": "build/",
+        "severity": "recommended",
+        "reason": "Gradle build output directory should not be committed"
+      },
+      {
+        "pattern": "!gradle-wrapper.jar",
+        "severity": "optional",
+        "reason": "Gradle wrapper JAR should typically be committed for reproducible builds"
+      },
+      {
+        "pattern": "gradle.properties",
+        "severity": "recommended",
+        "reason": "May contain credentials - review before committing"
+      },
+      {
+        "pattern": ".gradle-enterprise/",
+        "severity": "optional",
+        "reason": "Gradle Enterprise cache should not be committed"
+      }
+    ]
+  }
+}

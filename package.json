@@ -1,0 +1,120 @@
+{
+  "name": "gitguard",
+  "displayName": "GitGuard",
+  "description": "Proactively prevents accidental commits of sensitive files by intelligently managing .gitignore",
+  "version": "0.1.0",
+  "publisher": "gitguard",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitguard/gitguard-vscode"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "SCM Providers"
+  ],
+  "keywords": [
+    "git",
+    "gitignore",
+    "security",
+    "env",
+    "secrets"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/.git",
+    "workspaceContains:**/package.json",
+    "workspaceContains:**/requirements.txt",
+    "workspaceContains:**/pyproject.toml",
+    "workspaceContains:**/pom.xml",
+    "workspaceContains:**/build.gradle"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "gitguard.scanWorkspace",
+        "title": "GitGuard: Scan Workspace for Risky Files"
+      },
+      {
+        "command": "gitguard.addToGitignore",
+        "title": "GitGuard: Add Pattern to .gitignore"
+      },
+      {
+        "command": "gitguard.showDetectedFrameworks",
+        "title": "GitGuard: Show Detected Frameworks"
+      },
+      {
+        "command": "gitguard.suggestGitignoreRules",
+        "title": "GitGuard: Suggest .gitignore Rules"
+      }
+    ],
+    "configuration": {
+      "title": "GitGuard",
+      "properties": {
+        "gitGuard.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable GitGuard extension"
+        },
+        "gitGuard.autoSuggest": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically suggest .gitignore rules when new frameworks are detected"
+        },
+        "gitGuard.preCommitCheck": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check for sensitive files before commits"
+        },
+        "gitGuard.modifyGitignoreAutomatically": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically add rules to .gitignore without confirmation (not recommended)"
+        },
+        "gitGuard.watchFileCreation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Watch for creation of risky files and show warnings"
+        },
+        "gitGuard.ignoredPatterns": {
+          "type": "array",
+          "default": [],
+          "description": "Patterns to ignore (will not trigger warnings)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "gitGuard.suppressedWarnings": {
+          "type": "array",
+          "default": [],
+          "description": "File patterns for which warnings have been permanently dismissed",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "minimatch": "^9.0.3"
+  }
+}

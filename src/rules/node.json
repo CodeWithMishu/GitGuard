@@ -1,0 +1,186 @@
+{
+  "category": "node",
+  "name": "Node.js / JavaScript",
+  "description": "Rules for Node.js, npm, and JavaScript/TypeScript projects",
+  "rules": [
+    {
+      "pattern": ".env",
+      "severity": "critical",
+      "reason": "Environment files contain secrets, API keys, and database credentials that should never be committed"
+    },
+    {
+      "pattern": ".env.local",
+      "severity": "critical",
+      "reason": "Local environment overrides often contain developer-specific secrets"
+    },
+    {
+      "pattern": ".env.*.local",
+      "severity": "critical",
+      "reason": "Environment-specific local files may contain sensitive overrides"
+    },
+    {
+      "pattern": ".env.development.local",
+      "severity": "critical",
+      "reason": "Development environment secrets should not be shared"
+    },
+    {
+      "pattern": ".env.production.local",
+      "severity": "critical",
+      "reason": "Production secrets must never be committed to version control"
+    },
+    {
+      "pattern": "node_modules/",
+      "severity": "recommended",
+      "reason": "Dependencies should be installed via npm/yarn, not committed. This folder can be huge."
+    },
+    {
+      "pattern": "npm-debug.log*",
+      "severity": "recommended",
+      "reason": "Debug logs may contain sensitive information and are not needed in version control"
+    },
+    {
+      "pattern": "yarn-debug.log*",
+      "severity": "recommended",
+      "reason": "Yarn debug logs may contain sensitive information"
+    },
+    {
+      "pattern": "yarn-error.log*",
+      "severity": "recommended",
+      "reason": "Yarn error logs are developer-specific and not needed in version control"
+    },
+    {
+      "pattern": ".npm",
+      "severity": "optional",
+      "reason": "npm cache directory should not be committed"
+    },
+    {
+      "pattern": ".yarn/cache",
+      "severity": "optional",
+      "reason": "Yarn cache is machine-specific and should not be committed"
+    },
+    {
+      "pattern": ".pnpm-store/",
+      "severity": "optional",
+      "reason": "pnpm store is machine-specific"
+    },
+    {
+      "pattern": "dist/",
+      "severity": "recommended",
+      "reason": "Build output should be generated, not committed. Reduces repo size and merge conflicts."
+    },
+    {
+      "pattern": "build/",
+      "severity": "recommended",
+      "reason": "Build output directory should be regenerated, not committed"
+    },
+    {
+      "pattern": "out/",
+      "severity": "recommended",
+      "reason": "Output directory from TypeScript compilation should not be committed"
+    },
+    {
+      "pattern": ".cache/",
+      "severity": "optional",
+      "reason": "Cache directories are machine-specific"
+    },
+    {
+      "pattern": "coverage/",
+      "severity": "recommended",
+      "reason": "Test coverage reports should be generated locally or in CI, not committed"
+    },
+    {
+      "pattern": ".nyc_output/",
+      "severity": "optional",
+      "reason": "NYC coverage output is generated and should not be committed"
+    },
+    {
+      "pattern": "*.log",
+      "severity": "optional",
+      "reason": "Log files are typically developer or machine-specific"
+    },
+    {
+      "pattern": ".DS_Store",
+      "severity": "optional",
+      "reason": "macOS folder metadata file, not relevant to the project"
+    },
+    {
+      "pattern": "Thumbs.db",
+      "severity": "optional",
+      "reason": "Windows thumbnail cache file, not relevant to the project"
+    },
+    {
+      "pattern": "*.tsbuildinfo",
+      "severity": "optional",
+      "reason": "TypeScript incremental build info is machine-specific"
+    }
+  ],
+  "frameworks": {
+    "react": [
+      {
+        "pattern": ".env.test.local",
+        "severity": "critical",
+        "reason": "Test environment secrets should not be committed"
+      }
+    ],
+    "nextjs": [
+      {
+        "pattern": ".next/",
+        "severity": "recommended",
+        "reason": "Next.js build output should not be committed"
+      },
+      {
+        "pattern": "out/",
+        "severity": "recommended",
+        "reason": "Next.js static export output should be regenerated"
+      },
+      {
+        "pattern": ".vercel",
+        "severity": "optional",
+        "reason": "Vercel deployment configuration may contain project-specific settings"
+      }
+    ],
+    "vue": [
+      {
+        "pattern": ".nuxt/",
+        "severity": "recommended",
+        "reason": "Nuxt.js build output should not be committed"
+      },
+      {
+        "pattern": ".output/",
+        "severity": "recommended",
+        "reason": "Nuxt 3 output directory should be regenerated"
+      }
+    ],
+    "angular": [
+      {
+        "pattern": ".angular/",
+        "severity": "recommended",
+        "reason": "Angular cache directory should not be committed"
+      },
+      {
+        "pattern": "dist/",
+        "severity": "recommended",
+        "reason": "Angular build output should be regenerated"
+      }
+    ],
+    "vite": [
+      {
+        "pattern": "dist/",
+        "severity": "recommended",
+        "reason": "Vite build output should be regenerated"
+      }
+    ],
+    "svelte": [
+      {
+        "pattern": ".svelte-kit/",
+        "severity": "recommended",
+        "reason": "SvelteKit build output should not be committed"
+      },
+      {
+        "pattern": "build/",
+        "severity": "recommended",
+        "reason": "Svelte build output should be regenerated"
+      }
+    ]
+  }
+}
