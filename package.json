@@ -2,7 +2,7 @@
   "name": "gitguard",
   "displayName": "GitGuard",
   "description": "Proactively prevents accidental commits of sensitive files by intelligently managing .gitignore",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "publisher": "codewithmishu",
   "license": "MIT",
   "repository": {
