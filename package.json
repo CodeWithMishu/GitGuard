@@ -3,11 +3,20 @@
   "displayName": "GitGuard",
   "description": "Proactively prevents accidental commits of sensitive files by intelligently managing .gitignore",
   "version": "0.1.0",
-  "publisher": "gitguard",
+  "publisher": "codewithmishu",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/gitguard/gitguard-vscode"
+  },
+  "homepage": "https://github.com/gitguard/gitguard-vscode",
+  "bugs": {
+    "url": "https://github.com/gitguard/gitguard-vscode/issues"
+  },
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
   },
   "engines": {
     "vscode": "^1.85.0"
@@ -21,7 +30,14 @@
     "gitignore",
     "security",
     "env",
-    "secrets"
+    "secrets",
+    "framework",
+    "nodejs",
+    "python",
+    "java",
+    "react",
+    "vue",
+    "django"
   ],
   "activationEvents": [
     "workspaceContains:**/.git",
@@ -104,7 +120,9 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
