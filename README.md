@@ -36,8 +36,8 @@
 
 **Option 3: Build from Source**
 ```bash
-git clone https://github.com/codewithmishu/gitguard.git
-cd gitguard-vscode
+git clone https://github.com/codewithmishu/GitGuard.git
+cd GitGuard
 npm install
 npm run compile
 # Press F5 to launch Extension Development Host
