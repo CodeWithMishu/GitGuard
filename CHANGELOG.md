@@ -34,3 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GitGuard: Add Pattern to .gitignore` 
 - `GitGuard: Show Detected Frameworks`
 - `GitGuard: Suggest .gitignore Rules`
+
+## [0.1.1] - 2026-02-07
+
+### Changed
+- Bumped package version to 0.1.1 and prepared new packaged artifact
